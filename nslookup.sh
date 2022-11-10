@@ -8,7 +8,7 @@ echo "Basliyor"
 while read p; do
     echo "kontrol ediliyor: " $p
     echo "Website: " $p >> sonuclar.txt
-    nslookup $p | grep "Address" >> sonuclar.txt
+    nslookup -type=ns $p | grep "nameserver" | grep "cloudflare" >> sonuclar.txt
     echo "---------------------------------------" >> sonuclar.txt
 done < $file
 
